@@ -1,9 +1,15 @@
-import { View, StyleSheet, Text } from "react-native";
+import { BottomSheetModal } from "@gorhom/bottom-sheet";
+import { useRef } from "react";
+import { View, StyleSheet, Button } from "react-native";
+import { MyBottomSheet } from "./MyBottomSheet";
 
 export const MainPage = () => {
+  const ref = useRef<BottomSheetModal | null>(null);
+
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Hello World!</Text>
+      <Button title="Open Sheet" onPress={() => ref.current?.present()} />
+      <MyBottomSheet ref={ref} />
     </View>
   );
 };
@@ -11,7 +17,7 @@ export const MainPage = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#efefef",
     alignItems: "center",
     justifyContent: "center",
   },
